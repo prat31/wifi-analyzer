@@ -11,8 +11,11 @@ android {
         applicationId = "com.example.wifianalyzer"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        
+        // Dynamic Versioning for CI/CD
+        val buildNumber = System.getenv("BUILD_NUMBER")?.toIntOrNull() ?: 1
+        versionCode = buildNumber
+        versionName = "1.0.$buildNumber"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
